@@ -13,7 +13,9 @@ public class TicTacToeGame {
 	private static char player;
 	private static char computer;
 	private static int location;
+	private static int coinToss;
 	public static final Scanner sc = new Scanner(System.in);
+	public static final Random rand = new Random();
 
 	// This method is used to create board and initialize it
 	public static void createBoard() {
@@ -70,6 +72,18 @@ public class TicTacToeGame {
 		}
 	}
 
+	// This method is used for toss and who plays first
+	public static void toss() {
+		coinToss = rand.nextInt(2) + 1;
+		System.out.println("Choose 1 for Heads or 2 for Tails");
+		int coinSelect = sc.nextInt();
+		if (coinSelect == coinToss) {
+			System.out.println("Toss Won, Player plays first:");
+		} else {
+			System.out.println("Toss Lost, Computer plays first:");
+		}
+	}
+
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
@@ -77,5 +91,6 @@ public class TicTacToeGame {
 		playerChoice();
 		showBoard();
 		playerMove();
+		toss();
 	}
 }
