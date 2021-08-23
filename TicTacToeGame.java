@@ -29,6 +29,7 @@ public class TicTacToeGame {
 	public static void playerChoice() {
 		System.out.println("Choose 'X' or 'O' ");
 		playerInput = sc.next().charAt(0);
+		sc.nextLine();
 		if (playerInput == 'X') {
 			player = playerInput;
 			computer = 'O';
@@ -51,7 +52,8 @@ public class TicTacToeGame {
 	public static void playerMove() {
 		System.out.println("Enter Location 1-9 to Make Move");
 		location = sc.nextInt();
-		if(location<10&&location>0) {
+		sc.nextLine();
+		if(isEmpty()&&location<10&&location>0) {
 			board[location]=player;
 			showBoard();
 		}
@@ -60,6 +62,14 @@ public class TicTacToeGame {
 		}
 	}
 
+	public static boolean isEmpty() {
+		if(board[location]==' ') {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
