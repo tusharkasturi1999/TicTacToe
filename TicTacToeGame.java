@@ -51,8 +51,13 @@ public class TicTacToeGame {
 	public static void playerMove() {
 		System.out.println("Enter Location 1-9 to Make Move");
 		location = sc.nextInt();
-		board[location]=player;
-		showBoard();
+		if(location<10&&location>0) {
+			board[location]=player;
+			showBoard();
+		}
+		else {
+			System.out.println("Invalid Choice");
+		}
 	}
 
 	public static void main(String[] args) {
