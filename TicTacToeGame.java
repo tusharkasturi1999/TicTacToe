@@ -1,14 +1,16 @@
 
+import java.util.*;
+
 /**
  * @author tushar.kasturi_ymedi
  *
  */
-import java.util.*;
-
 public class TicTacToeGame {
 
 	private static char[] board = new char[10];
 	private static char playerInput;
+	private static char player;
+	private static char computer;
 	public static final Scanner sc = new Scanner(System.in);
 
 	/**
@@ -26,6 +28,14 @@ public class TicTacToeGame {
 	public static void playerChoice() {
 		System.out.println("Choose 'X' or 'O' ");
 		playerInput = sc.next().charAt(0);
+		if (playerInput == 'X') {
+			player = playerInput;
+			computer = 'O';
+		} else {
+			player = playerInput;
+			computer = 'X';
+		}
+
 	}
 
 	public static void main(String[] args) {
