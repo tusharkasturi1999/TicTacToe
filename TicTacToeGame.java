@@ -11,6 +11,7 @@ public class TicTacToeGame {
 	private static char playerInput;
 	private static char player;
 	private static char computer;
+	private static int location;
 	public static final Scanner sc = new Scanner(System.in);
 
 	/**
@@ -20,8 +21,8 @@ public class TicTacToeGame {
 
 	public static void createBoard() {
 
-		for (int i = 1; i < board.length; i++) {
-			board[i] = ' ';
+		for (int index = 1; index < board.length; index++) {
+			board[index] = ' ';
 		}
 	}
 
@@ -37,14 +38,60 @@ public class TicTacToeGame {
 		}
 
 	}
-	
+
 	public static void showBoard() {
-		System.out.println("\n "+board[1]+" | "+board[2]+" | "+board[3]);
+		System.out.println("\n " + board[1] + " | " + board[2] + " | " + board[3]);
 		System.out.println("___|___|___");
-		System.out.println(" "+board[4]+" | "+board[5]+" | "+board[6]);
+		System.out.println(" " + board[4] + " | " + board[5] + " | " + board[6]);
 		System.out.println("___|___|___");
-		System.out.println(" "+board[7]+" | "+board[8]+" | "+board[9]);
+		System.out.println(" " + board[7] + " | " + board[8] + " | " + board[9]);
 		System.out.println("   |   |   \n");
+	}
+
+	public static void playerMove() {
+		System.out.println("Enter Location 1-9 to Make Move");
+		location = sc.nextInt();
+		switch (location) {
+		case 1:
+			board[1] = player;
+			showBoard();
+			break;
+		case 2:
+			board[2] = player;
+			showBoard();
+			break;
+		case 3:
+			board[3] = player;
+			showBoard();
+			break;
+		case 4:
+			board[4] = player;
+			showBoard();
+			break;
+		case 5:
+			board[5] = player;
+			showBoard();
+			break;
+		case 6:
+			board[6] = player;
+			showBoard();
+			break;
+		case 7:
+			board[7] = player;
+			showBoard();
+			break;
+		case 8:
+			board[8] = player;
+			showBoard();
+			break;
+		case 9:
+			board[9] = player;
+			showBoard();
+			break;
+		default:
+			System.out.println("Invalid Choice");
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -53,5 +100,6 @@ public class TicTacToeGame {
 		createBoard();
 		playerChoice();
 		showBoard();
+		playerMove();
 	}
 }
