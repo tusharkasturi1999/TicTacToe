@@ -73,14 +73,14 @@ public class TicTacToeGame {
 	public static void computerMove() {
 		do {
 			location = rand.nextInt(9) + 1;
-			if(computerWinMotive()) {
+			if (computerWinMotive()) {
 			}
 		} while (!isEmpty(location));
 		board[location] = computer;
 		showBoard();
 	}
 
-	//This method tries that the computer Wins
+	// This method tries that the computer Wins & Blocks user from winning
 	public static boolean computerWinMotive() {
 		if (board[1] == computer && board[2] == computer && board[3] == ' ') {
 			location = 3;
@@ -177,11 +177,107 @@ public class TicTacToeGame {
 		if (board[7] == computer && board[5] == computer && board[3] == ' ') {
 			location = 3;
 			return true;
+		}
+		if (board[1] == player && board[2] == player && board[3] == ' ') {
+			location = 3;
+			return true;
+		}
+		if (board[1] == player && board[3] == player && board[2] == ' ') {
+			location = 2;
+			return true;
+		}
+		if (board[3] == player && board[2] == player && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[4] == player && board[5] == player && board[6] == ' ') {
+			location = 6;
+			return true;
+		}
+		if (board[4] == player && board[6] == player && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[6] == player && board[5] == player && board[4] == ' ') {
+			location = 4;
+			return true;
+		}
+		if (board[7] == player && board[8] == player && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[7] == player && board[9] == player && board[8] == ' ') {
+			location = 8;
+			return true;
+		}
+		if (board[9] == player && board[8] == player && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[1] == player && board[4] == player && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[1] == player && board[7] == player && board[4] == ' ') {
+			location = 4;
+			return true;
+		}
+		if (board[7] == player && board[4] == player && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[2] == player && board[5] == player && board[8] == ' ') {
+			location = 8;
+			return true;
+		}
+		if (board[2] == player && board[8] == player && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[8] == player && board[5] == player && board[2] == ' ') {
+			location = 2;
+			return true;
+		}
+		if (board[3] == player && board[6] == player && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[3] == player && board[9] == player && board[6] == ' ') {
+			location = 6;
+			return true;
+		}
+		if (board[9] == player && board[6] == player && board[3] == ' ') {
+			location = 3;
+			return true;
+		}
+		if (board[1] == player && board[5] == player && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[1] == player && board[9] == player && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[9] == player && board[5] == player && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[3] == player && board[5] == player && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[3] == player && board[7] == player && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[7] == player && board[5] == player && board[3] == ' ') {
+			location = 3;
+			return true;
 		} else
 			return false;
 	}
 
-	
+
 
 	// This method is used check whether location is empty or not
 	public static boolean isEmpty(int location) {
