@@ -68,16 +68,120 @@ public class TicTacToeGame {
 			}
 		}
 	}
-	
-	//This method defines the computer's move
+
+	// This method defines the computer's move
 	public static void computerMove() {
 		do {
 			location = rand.nextInt(9) + 1;
+			if(computerWinMotive()) {
+			}
 		} while (!isEmpty(location));
-
 		board[location] = computer;
 		showBoard();
 	}
+
+	//This method tries that the computer Wins
+	public static boolean computerWinMotive() {
+		if (board[1] == computer && board[2] == computer && board[3] == ' ') {
+			location = 3;
+			return true;
+		}
+		if (board[1] == computer && board[3] == computer && board[2] == ' ') {
+			location = 2;
+			return true;
+		}
+		if (board[3] == computer && board[2] == computer && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[4] == computer && board[5] == computer && board[6] == ' ') {
+			location = 6;
+			return true;
+		}
+		if (board[4] == computer && board[6] == computer && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[6] == computer && board[5] == computer && board[4] == ' ') {
+			location = 4;
+			return true;
+		}
+		if (board[7] == computer && board[8] == computer && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[7] == computer && board[9] == computer && board[8] == ' ') {
+			location = 8;
+			return true;
+		}
+		if (board[9] == computer && board[8] == computer && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[1] == computer && board[4] == computer && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[1] == computer && board[7] == computer && board[4] == ' ') {
+			location = 4;
+			return true;
+		}
+		if (board[7] == computer && board[4] == computer && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[2] == computer && board[5] == computer && board[8] == ' ') {
+			location = 8;
+			return true;
+		}
+		if (board[2] == computer && board[8] == computer && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[8] == computer && board[5] == computer && board[2] == ' ') {
+			location = 2;
+			return true;
+		}
+		if (board[3] == computer && board[6] == computer && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[3] == computer && board[9] == computer && board[6] == ' ') {
+			location = 6;
+			return true;
+		}
+		if (board[9] == computer && board[6] == computer && board[3] == ' ') {
+			location = 3;
+			return true;
+		}
+		if (board[1] == computer && board[5] == computer && board[9] == ' ') {
+			location = 9;
+			return true;
+		}
+		if (board[1] == computer && board[9] == computer && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[9] == computer && board[5] == computer && board[1] == ' ') {
+			location = 1;
+			return true;
+		}
+		if (board[3] == computer && board[5] == computer && board[7] == ' ') {
+			location = 7;
+			return true;
+		}
+		if (board[3] == computer && board[7] == computer && board[5] == ' ') {
+			location = 5;
+			return true;
+		}
+		if (board[7] == computer && board[5] == computer && board[3] == ' ') {
+			location = 3;
+			return true;
+		} else
+			return false;
+	}
+
+	
 
 	// This method is used check whether location is empty or not
 	public static boolean isEmpty(int location) {
@@ -97,8 +201,8 @@ public class TicTacToeGame {
 			tossWin = false;
 		}
 	}
-	
-	//This method defines the conditions for a win
+
+	// This method defines the conditions for a win
 	public static boolean defineWin() {
 		if (didWin)
 			return true;
@@ -129,7 +233,7 @@ public class TicTacToeGame {
 		return false;
 	}
 
-	//This method check whether the board is full or not
+	// This method check whether the board is full or not
 	public static boolean isBoardFull() {
 		if ((board[1] != ' ') && (board[2] != ' ') && (board[3] != ' ') && (board[4] != ' ') && (board[5] != ' ')
 				&& (board[6] != ' ') && (board[7] != ' ') && (board[8] != ' ') && (board[9] != ' ')) {
@@ -139,7 +243,7 @@ public class TicTacToeGame {
 		return false;
 	}
 
-	//This method starts the game
+	// This method starts the game
 	public static void gamestart() {
 		do {
 			if (tossWin) {
@@ -157,7 +261,7 @@ public class TicTacToeGame {
 
 	}
 
-	//This is the main method
+	// This is the main method
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
