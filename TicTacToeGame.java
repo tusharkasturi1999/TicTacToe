@@ -346,7 +346,7 @@ public class TicTacToeGame {
 		return false;
 	}
 
-	// This method starts the game
+	// This method starts the game and plays till game wins or a tie
 	public static void gamestart() {
 		do {
 			if (tossWin) {
