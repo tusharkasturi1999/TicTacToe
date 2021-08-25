@@ -72,7 +72,15 @@ public class TicTacToeGame {
 	// This method defines the computer's move
 	public static void computerMove() {
 		do {
-			location = rand.nextInt(9) + 1;
+			int corner = rand.nextInt(4) + 1;
+			if(corner == 1)
+				location = 1;
+			if(corner == 2)
+				location = 3;
+			if(corner == 3)
+				location = 7;
+			if(corner == 4)
+				location = 9;		
 			if (computerWinMotive()) {
 			}
 		} while (!isEmpty(location));
@@ -276,7 +284,6 @@ public class TicTacToeGame {
 		} else
 			return false;
 	}
-
 
 
 	// This method is used check whether location is empty or not
