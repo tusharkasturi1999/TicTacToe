@@ -368,12 +368,11 @@ public class TicTacToeGame {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
+		while( playMore != '1') {
 		createBoard();
 		playerChoice();
 		showBoard();
 		toss();
-		
-		while( playMore != '1') {
 		gamestart();
 		System.out.println("Press '1' to Exit");
 		playMore = sc.next().charAt(0);
