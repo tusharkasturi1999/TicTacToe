@@ -11,6 +11,7 @@ public class TicTacToeGame {
 	private static char playerInput;
 	private static char player;
 	private static char computer;
+	private static char playMore;
 	private static int playerLocation;
 	private static int location;
 	private static int coinToss;
@@ -69,21 +70,20 @@ public class TicTacToeGame {
 		}
 	}
 
+	public static void occupyCorner() {
+		
+			int[] arr = {1,3,7,9};
+			int corner = rand.nextInt(3);
+			location = arr[corner];			
+	}
 	// This method defines the computer's move
 	public static void computerMove() {
 		do {
-			int corner = rand.nextInt(4) + 1;
-			if(corner == 1)
-				location = 1;
-			if(corner == 2)
-				location = 3;
-			if(corner == 3)
-				location = 7;
-			if(corner == 4)
-				location = 9;		
+			occupyCorner();
 			if (computerWinMotive()) {
 			}
 		} while (!isEmpty(location));
+
 		board[location] = computer;
 		showBoard();
 	}
@@ -372,6 +372,11 @@ public class TicTacToeGame {
 		playerChoice();
 		showBoard();
 		toss();
+		
+		while( playMore != '1') {
 		gamestart();
+		System.out.println("Press '1' to Exit");
+		playMore = sc.next().charAt(0);
+		}
 	}
 }
