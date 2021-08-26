@@ -399,6 +399,7 @@ public class TicTacToeGame {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
 		boolean check = true;
+		//This loop allows user to play more than 1 game
 		while(check){
 			createBoard();
 			playerChoice();
