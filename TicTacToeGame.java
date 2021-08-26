@@ -11,7 +11,7 @@ public class TicTacToeGame {
 	private static char playerInput;
 	private static char player;
 	private static char computer;
-	private static char playMore;
+	private static int playMore;
 	private static int playerLocation;
 	private static int location;
 	private static int coinToss;
@@ -95,6 +95,8 @@ public class TicTacToeGame {
 			occupyCorner();
 			if (occupyCenter()) {
 			}
+			if (occupyOther()) {
+			}
 			if (computerWinMotive()) {
 			}
 		} while (!isEmpty(location));
@@ -106,16 +108,30 @@ public class TicTacToeGame {
 	// This method is used to occupy corner if noone is winning
 	public static void occupyCorner() {
 
-		int[] arr = { 1, 3, 7, 9 };
+		int[] corners = { 1, 3, 7, 9 };
 		int corner = rand.nextInt(3);
-		location = arr[corner];
+		location = corners[corner];
 	}
 
-	// This method is used to occupy center if noone is winning
+	// This method is used to occupy center if no one is winning
 	public static boolean occupyCenter() {
 		if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ') {
 			if (isEmpty(5)) {
 				location = 5;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// This method is used to occupy other positions if no one is winning and no
+	// corner or center is available
+	public static boolean occupyOther() {
+		if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ' && board[5] != ' ') {
+			int[] notCorners = { 2, 4, 6, 8 };
+			int notCorner = rand.nextInt(3);
+			if (isEmpty(notCorners[notCorner])) {
+				location = notCorners[notCorner];
 				return true;
 			}
 		}
@@ -382,14 +398,19 @@ public class TicTacToeGame {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
-		while (playMore != '1') {
+		boolean check = true;
+		while(check){
 			createBoard();
 			playerChoice();
 			showBoard();
 			toss();
 			gamestart();
-			System.out.println("Press '1' to Exit, '2' to Continue");
-			playMore = sc.next().charAt(0);
+			System.out.println("Press '1' to continue playing, '2' to exit");
+			playMore = sc.nextInt();
+			if(playMore ==2) {
+				System.out.println("Thankyou for playing");
+				System.exit(0);
+			}
 		}
 	}
 }
