@@ -53,6 +53,25 @@ public class TicTacToeGame {
 		System.out.println("   |   |   \n");
 	}
 
+	// This method is used for toss and who plays first
+	public static void toss() {
+		coinToss = rand.nextInt(2) + 1;
+		System.out.println("Choose 1 for Heads or 2 for Tails");
+		int coinSelect = sc.nextInt();
+		if (coinSelect == coinToss) {
+			System.out.println("Toss Won, Player plays first:");
+			tossWin = true;
+		} else {
+			System.out.println("Toss Lost, Computer plays first:");
+			tossWin = false;
+		}
+	}
+
+	// This method is used check whether location is empty or not
+	public static boolean isEmpty(int location) {
+		return board[location] == ' ';
+	}
+
 	// This method is used for player to select location
 	public static void playerMove() {
 		System.out.println("Enter Location 1-9 to Make Move");
@@ -70,22 +89,78 @@ public class TicTacToeGame {
 		}
 	}
 
-	public static void occupyCorner() {
-		
-			int[] arr = {1,3,7,9};
-			int corner = rand.nextInt(3);
-			location = arr[corner];			
-	}
 	// This method defines the computer's move
 	public static void computerMove() {
 		do {
 			occupyCorner();
+			if (occupyCenter()) {
+			}
 			if (computerWinMotive()) {
 			}
 		} while (!isEmpty(location));
 
 		board[location] = computer;
 		showBoard();
+	}
+
+	// This method is used to occupy corner if noone is winning
+	public static void occupyCorner() {
+
+		int[] arr = { 1, 3, 7, 9 };
+		int corner = rand.nextInt(3);
+		location = arr[corner];
+	}
+
+	// This method is used to occupy center if noone is winning
+	public static boolean occupyCenter() {
+		if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ') {
+			if (isEmpty(5)) {
+				location = 5;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// This method defines the conditions for a win
+	public static boolean defineWin() {
+		if (didWin)
+			return true;
+		if ((board[1] == player && board[2] == player && board[3] == player)
+				|| (board[4] == player && board[5] == player && board[6] == player)
+				|| (board[7] == player && board[8] == player && board[9] == player)
+				|| (board[1] == player && board[4] == player && board[7] == player)
+				|| (board[2] == player && board[5] == player && board[8] == player)
+				|| (board[3] == player && board[6] == player && board[9] == player)
+				|| (board[1] == player && board[5] == player && board[9] == player)
+				|| (board[3] == player && board[5] == player && board[7] == player)) {
+			System.out.println("Player 1 WINS");
+			didWin = true;
+			return true;
+		}
+		if ((board[1] == computer && board[2] == computer && board[3] == computer)
+				|| (board[4] == computer && board[5] == computer && board[6] == computer)
+				|| (board[7] == computer && board[8] == computer && board[9] == computer)
+				|| (board[1] == computer && board[4] == computer && board[7] == computer)
+				|| (board[2] == computer && board[5] == computer && board[8] == computer)
+				|| (board[3] == computer && board[6] == computer && board[9] == computer)
+				|| (board[1] == computer && board[5] == computer && board[9] == computer)
+				|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
+			System.out.println("Computer WINS");
+			didWin = true;
+			return true;
+		}
+		return false;
+	}
+
+	// This method check whether the board is full or not
+	public static boolean isBoardFull() {
+		if ((board[1] != ' ') && (board[2] != ' ') && (board[3] != ' ') && (board[4] != ' ') && (board[5] != ' ')
+				&& (board[6] != ' ') && (board[7] != ' ') && (board[8] != ' ') && (board[9] != ' ')) {
+
+			return true;
+		}
+		return false;
 	}
 
 	// This method tries that the computer Wins & Blocks user from winning
@@ -285,67 +360,6 @@ public class TicTacToeGame {
 			return false;
 	}
 
-
-	// This method is used check whether location is empty or not
-	public static boolean isEmpty(int location) {
-		return board[location] == ' ';
-	}
-
-	// This method is used for toss and who plays first
-	public static void toss() {
-		coinToss = rand.nextInt(2) + 1;
-		System.out.println("Choose 1 for Heads or 2 for Tails");
-		int coinSelect = sc.nextInt();
-		if (coinSelect == coinToss) {
-			System.out.println("Toss Won, Player plays first:");
-			tossWin = true;
-		} else {
-			System.out.println("Toss Lost, Computer plays first:");
-			tossWin = false;
-		}
-	}
-
-	// This method defines the conditions for a win
-	public static boolean defineWin() {
-		if (didWin)
-			return true;
-		if ((board[1] == player && board[2] == player && board[3] == player)
-				|| (board[4] == player && board[5] == player && board[6] == player)
-				|| (board[7] == player && board[8] == player && board[9] == player)
-				|| (board[1] == player && board[4] == player && board[7] == player)
-				|| (board[2] == player && board[5] == player && board[8] == player)
-				|| (board[3] == player && board[6] == player && board[9] == player)
-				|| (board[1] == player && board[5] == player && board[9] == player)
-				|| (board[3] == player && board[5] == player && board[7] == player)) {
-			System.out.println("Player 1 WINS");
-			didWin = true;
-			return true;
-		}
-		if ((board[1] == computer && board[2] == computer && board[3] == computer)
-				|| (board[4] == computer && board[5] == computer && board[6] == computer)
-				|| (board[7] == computer && board[8] == computer && board[9] == computer)
-				|| (board[1] == computer && board[4] == computer && board[7] == computer)
-				|| (board[2] == computer && board[5] == computer && board[8] == computer)
-				|| (board[3] == computer && board[6] == computer && board[9] == computer)
-				|| (board[1] == computer && board[5] == computer && board[9] == computer)
-				|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
-			System.out.println("Computer WINS");
-			didWin = true;
-			return true;
-		}
-		return false;
-	}
-
-	// This method check whether the board is full or not
-	public static boolean isBoardFull() {
-		if ((board[1] != ' ') && (board[2] != ' ') && (board[3] != ' ') && (board[4] != ' ') && (board[5] != ' ')
-				&& (board[6] != ' ') && (board[7] != ' ') && (board[8] != ' ') && (board[9] != ' ')) {
-
-			return true;
-		}
-		return false;
-	}
-
 	// This method starts the game and plays till game wins or a tie
 	public static void gamestart() {
 		do {
@@ -368,14 +382,14 @@ public class TicTacToeGame {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome to Tic Tac Toe \n");
-		while( playMore != '1') {
-		createBoard();
-		playerChoice();
-		showBoard();
-		toss();
-		gamestart();
-		System.out.println("Press '1' to Exit");
-		playMore = sc.next().charAt(0);
+		while (playMore != '1') {
+			createBoard();
+			playerChoice();
+			showBoard();
+			toss();
+			gamestart();
+			System.out.println("Press '1' to Exit, '2' to Continue");
+			playMore = sc.next().charAt(0);
 		}
 	}
 }
