@@ -33,7 +33,7 @@ public class TicTacToeGame {
 		System.out.println("Choose 'X' or 'O' ");
 		playerInput = sc.next().charAt(0);
 		sc.nextLine();
-		if (playerInput == 'X') {
+		if (playerInput == 'X' || playerInput == 'x') {
 			player = playerInput;
 			computer = 'O';
 		} else {
