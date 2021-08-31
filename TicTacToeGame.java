@@ -37,6 +37,7 @@ public class TicTacToeGame {
 			player = playerInput;
 			computer = 'O';
 		} else {
+			System.out.println("Invalid input, You have been assigned 'O'");
 			player = 'O';
 			computer = 'X';
 		}
