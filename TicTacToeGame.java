@@ -3,7 +3,14 @@ import java.util.*;
 
 /**
  * @author tushar.kasturi_ymedi
- *
+ * @param board This is used to create a character array for board
+ * @param playerInput This is used to take input from player 
+ * @param player This is used to hold player's input
+ * @param computer This is used to hold computer's input
+ * @param playMore This is used to play more games
+ * @param playerLocation This is used to determine player's location on board
+ * @param coinToss This is used to hold toss method's output
+ * @param didWin This is used to check did player won or lost
  */
 public class TicTacToeGame {
 
